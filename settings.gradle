@@ -1,2 +1,3 @@
 rootProject.name = 'students-homework-tracker'
+include 'data-service'
 
