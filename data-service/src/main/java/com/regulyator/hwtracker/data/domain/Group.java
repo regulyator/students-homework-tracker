@@ -23,6 +23,6 @@ public class Group {
     private final LocalDateTime groupEnd;
     @Field("teachers")
     private final List<Teacher> teachers;
-    @Field("students")
-    private final List<Student> students;
+    @Field("studentGroups")
+    private final List<StudentGroup> studentGroups;
 }

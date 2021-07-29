@@ -8,14 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Builder
-@Document("StudentGroupRepository")
-public class StudentGroupRepository {
+@Document("StudentGroup")
+public class StudentGroup {
     @Id
     private final String id;
     @Field("group")
     private final Group group;
-    @Field
+    @Field("student")
     private final Student student;
-    @Field
-    private final
+    @Field("homeworkRepositoryUrl")
+    private final String homeworkRepositoryUrl;
 }
