@@ -3,6 +3,7 @@ package com.regulyator.hwtracker.data.service.data.impl;
 import com.regulyator.hwtracker.data.dto.HomeWorkDto;
 import com.regulyator.hwtracker.data.repository.HomeWorkRepository;
 import com.regulyator.hwtracker.data.service.data.HomeworkService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,13 @@ import java.util.List;
 @Service
 public class HomeworkServiceImpl implements HomeworkService {
     private final HomeWorkRepository homeWorkRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public HomeworkServiceImpl(HomeWorkRepository homeWorkRepository) {
+    public HomeworkServiceImpl(HomeWorkRepository homeWorkRepository,
+                               ModelMapper modelMapper) {
         this.homeWorkRepository = homeWorkRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -34,6 +38,6 @@ public class HomeworkServiceImpl implements HomeworkService {
 
     @Override
     public void removeById(String id) {
-
+        homeWorkRepository.deleteById(id);
     }
 }

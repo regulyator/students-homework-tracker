@@ -3,6 +3,7 @@ package com.regulyator.hwtracker.data.service.data.impl;
 import com.regulyator.hwtracker.data.dto.StudentDto;
 import com.regulyator.hwtracker.data.repository.StudentRepository;
 import com.regulyator.hwtracker.data.service.data.StudentService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,13 @@ import java.util.List;
 @Service
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public StudentServiceImpl(StudentRepository studentRepository) {
+    public StudentServiceImpl(StudentRepository studentRepository,
+                              ModelMapper modelMapper) {
         this.studentRepository = studentRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -34,6 +38,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void removeById(String id) {
-
+        studentRepository.deleteById(id);
     }
 }
