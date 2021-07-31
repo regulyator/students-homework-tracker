@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/hwtracker
+server:
+  port: 8110
+
+springfox:
+  documentation:
+    openApi:
+      v3:
+        path: /hwtracker/documentation/v3/api-docs
+    swagger:
+      v2:
+        path: /hwtracker/documentation/v2/api-docs
