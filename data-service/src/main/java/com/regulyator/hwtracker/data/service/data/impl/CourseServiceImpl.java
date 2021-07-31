@@ -1,8 +1,11 @@
 package com.regulyator.hwtracker.data.service.data.impl;
 
+import com.regulyator.hwtracker.data.domain.Course;
 import com.regulyator.hwtracker.data.dto.CourseDto;
+import com.regulyator.hwtracker.data.exception.EntityNotFoundException;
 import com.regulyator.hwtracker.data.repository.CourseRepository;
 import com.regulyator.hwtracker.data.service.data.CourseService;
+import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +26,17 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public CourseDto save(CourseDto entity) {
-        return null;
+    public CourseDto save(@NonNull CourseDto courseDto) {
+        final var savedCourse = courseRepository.save(modelMapper.map(courseDto, Course.class));
+        return modelMapper.map(savedCourse, CourseDto.class);
     }
 
     @Override
-    public CourseDto getById(String id) {
-        return null;
+    public CourseDto getById(@NonNull String id) {
+        return courseRepository
+                .findById(id)
+                .map(course -> modelMapper.map(course, CourseDto.class))
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
@@ -40,7 +47,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void removeById(String id) {
+    public void removeById(@NonNull String id) {
         courseRepository.deleteById(id);
     }
 }

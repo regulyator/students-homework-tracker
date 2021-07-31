@@ -1,13 +1,17 @@
 package com.regulyator.hwtracker.data.service.data.impl;
 
+import com.regulyator.hwtracker.data.domain.Teacher;
 import com.regulyator.hwtracker.data.dto.TeacherDto;
+import com.regulyator.hwtracker.data.exception.EntityNotFoundException;
 import com.regulyator.hwtracker.data.repository.TeacherRepository;
 import com.regulyator.hwtracker.data.service.data.TeacherService;
+import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TeacherServiceImpl implements TeacherService {
@@ -22,22 +26,28 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public TeacherDto save(TeacherDto entity) {
-        return null;
+    public TeacherDto save(@NonNull TeacherDto teacherDto) {
+        final var savedTeacher = teacherRepository.save(modelMapper.map(teacherDto, Teacher.class));
+        return modelMapper.map(savedTeacher, TeacherDto.class);
     }
 
     @Override
-    public TeacherDto getById(String id) {
-        return null;
+    public TeacherDto getById(@NonNull String id) {
+        return teacherRepository
+                .findById(id)
+                .map(teacher -> modelMapper.map(teacher, TeacherDto.class))
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
     public List<TeacherDto> getAll() {
-        return null;
+        return teacherRepository.findAll().stream()
+                .map(teacher -> modelMapper.map(teacher, TeacherDto.class))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public void removeById(String id) {
+    public void removeById(@NonNull String id) {
         teacherRepository.deleteById(id);
     }
 }
