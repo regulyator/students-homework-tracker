@@ -1,4 +1,4 @@
-package com.regulyator.hwtracker.data.exception;
+package com.regulyator.hwtracker.scanner.exception;
 
 public class EntityNotFoundException extends DataException {
 

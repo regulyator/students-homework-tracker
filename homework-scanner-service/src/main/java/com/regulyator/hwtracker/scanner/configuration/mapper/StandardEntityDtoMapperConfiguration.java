@@ -1,4 +1,4 @@
-package com.regulyator.hwtracker.data.configuration.mapper;
+package com.regulyator.hwtracker.scanner.configuration.mapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

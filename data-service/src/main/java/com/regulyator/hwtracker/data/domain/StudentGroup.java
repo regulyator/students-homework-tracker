@@ -16,6 +16,8 @@ public class StudentGroup {
     private final Group group;
     @Field("student")
     private final Student student;
+    @Field("githubUserName")
+    private final String githubUserName;
     @Field("homeworkRepositoryUrl")
     private final String homeworkRepositoryUrl;
 }

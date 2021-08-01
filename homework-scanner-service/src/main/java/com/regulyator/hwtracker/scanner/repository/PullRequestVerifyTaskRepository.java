@@ -1,6 +1,6 @@
-package com.regulyator.hwtracker.data.repository;
+package com.regulyator.hwtracker.scanner.repository;
 
-import com.regulyator.hwtracker.data.domain.PullRequestVerifyTask;
+import com.regulyator.hwtracker.scanner.domain.stored.PullRequestVerifyTask;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

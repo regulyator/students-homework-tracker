@@ -1,4 +1,4 @@
-package com.regulyator.hwtracker.data.domain;
+package com.regulyator.hwtracker.scanner.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -8,20 +8,12 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Builder
-@Document("PullRequestVerifyTask")
-public class PullRequestVerifyTask {
-    @Id
+public class PullRequestVerifyTaskDto {
     private final String id;
-    @Field("groupId")
     private final String groupId;
-    @Field("homeworkId")
     private final String homeworkId;
-    @Field("studentId")
     private final String studentId;
-    @Field("assignedTeacherId")
     private final String assignedTeacherId;
-    @Field("pullRequestUrl")
     private final String pullRequestUrl;
-    @Field("verified")
     private final Boolean verified;
 }

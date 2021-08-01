@@ -1,4 +1,4 @@
-package com.regulyator.hwtracker.data.configuration.swagger;
+package com.regulyator.hwtracker.scanner.configuration.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

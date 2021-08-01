@@ -1,7 +1,7 @@
-package com.regulyator.hwtracker.data.web.controller;
+package com.regulyator.hwtracker.scanner.web.controller;
 
-import com.regulyator.hwtracker.data.dto.PullRequestVerifyTaskDto;
-import com.regulyator.hwtracker.data.service.data.PullRequestVerifyTaskService;
+import com.regulyator.hwtracker.scanner.dto.PullRequestVerifyTaskDto;
+import com.regulyator.hwtracker.scanner.service.data.PullRequestVerifyTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

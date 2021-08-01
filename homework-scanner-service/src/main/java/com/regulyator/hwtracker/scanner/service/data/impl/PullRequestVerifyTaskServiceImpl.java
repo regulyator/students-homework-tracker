@@ -1,10 +1,10 @@
-package com.regulyator.hwtracker.data.service.data.impl;
+package com.regulyator.hwtracker.scanner.service.data.impl;
 
-import com.regulyator.hwtracker.data.domain.PullRequestVerifyTask;
-import com.regulyator.hwtracker.data.dto.PullRequestVerifyTaskDto;
-import com.regulyator.hwtracker.data.exception.EntityNotFoundException;
-import com.regulyator.hwtracker.data.repository.PullRequestVerifyTaskRepository;
-import com.regulyator.hwtracker.data.service.data.PullRequestVerifyTaskService;
+import com.regulyator.hwtracker.scanner.domain.stored.PullRequestVerifyTask;
+import com.regulyator.hwtracker.scanner.dto.PullRequestVerifyTaskDto;
+import com.regulyator.hwtracker.scanner.exception.EntityNotFoundException;
+import com.regulyator.hwtracker.scanner.repository.PullRequestVerifyTaskRepository;
+import com.regulyator.hwtracker.scanner.service.data.PullRequestVerifyTaskService;
 import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

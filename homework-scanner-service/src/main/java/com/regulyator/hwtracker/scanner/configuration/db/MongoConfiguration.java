@@ -1,4 +1,4 @@
-package com.regulyator.hwtracker.data.configuration.db;
+package com.regulyator.hwtracker.scanner.configuration.db;
 
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 

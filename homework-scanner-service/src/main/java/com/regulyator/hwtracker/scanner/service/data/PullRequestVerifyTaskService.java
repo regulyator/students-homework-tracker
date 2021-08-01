@@ -1,7 +1,6 @@
-package com.regulyator.hwtracker.data.service.data;
+package com.regulyator.hwtracker.scanner.service.data;
 
-import com.regulyator.hwtracker.data.domain.PullRequestVerifyTask;
-import com.regulyator.hwtracker.data.dto.PullRequestVerifyTaskDto;
+import com.regulyator.hwtracker.scanner.dto.PullRequestVerifyTaskDto;
 
 import java.util.List;
 
