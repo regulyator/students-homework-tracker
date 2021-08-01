@@ -2,13 +2,16 @@ package com.regulyator.hwtracker.data.service.data.impl;
 
 import com.regulyator.hwtracker.data.domain.PullRequestVerifyTask;
 import com.regulyator.hwtracker.data.dto.PullRequestVerifyTaskDto;
+import com.regulyator.hwtracker.data.exception.EntityNotFoundException;
 import com.regulyator.hwtracker.data.repository.PullRequestVerifyTaskRepository;
 import com.regulyator.hwtracker.data.service.data.PullRequestVerifyTaskService;
+import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PullRequestVerifyTaskServiceImpl implements PullRequestVerifyTaskService {
@@ -23,53 +26,75 @@ public class PullRequestVerifyTaskServiceImpl implements PullRequestVerifyTaskSe
     }
 
     @Override
-    public PullRequestVerifyTaskDto save(PullRequestVerifyTaskDto pullRequestVerifyTaskDto) {
+    public PullRequestVerifyTaskDto save(@NonNull PullRequestVerifyTaskDto pullRequestVerifyTaskDto) {
         final var savedPullRequestVerifyTask = pullRequestVerifyTaskRepository
                 .save(modelMapper.map(pullRequestVerifyTaskDto, PullRequestVerifyTask.class));
         return modelMapper.map(savedPullRequestVerifyTask, PullRequestVerifyTaskDto.class);
     }
 
     @Override
-    public PullRequestVerifyTaskDto getById(String id) {
+    public PullRequestVerifyTaskDto getById(@NonNull String id) {
+        return pullRequestVerifyTaskRepository.findById(id)
+                .map(this::convertToDto)
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
     public List<PullRequestVerifyTaskDto> getAll() {
-        return null;
+        return pullRequestVerifyTaskRepository.findAll()
+                .stream().map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
-    @Override
-    public void removeById(String id) {
-
-    }
 
     @Override
-    public List<PullRequestVerifyTaskDto> getAllByAssignedTeacherId(String teacherId) {
-        return null;
+    public List<PullRequestVerifyTaskDto> getAllByAssignedTeacherId(@NonNull String teacherId) {
+        return pullRequestVerifyTaskRepository.findAllByAssignedTeacherId(teacherId)
+                .stream().map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<PullRequestVerifyTaskDto> getAllByAssignedTeacherIdIsNull() {
-        return null;
+        return pullRequestVerifyTaskRepository.findAllByAssignedTeacherIdIsNull()
+                .stream().map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<PullRequestVerifyTaskDto> getAllByStudentId(String studentId) {
-        return null;
+    public List<PullRequestVerifyTaskDto> getAllByStudentId(@NonNull String studentId) {
+        return pullRequestVerifyTaskRepository.findAllByStudentId(studentId)
+                .stream().map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<PullRequestVerifyTaskDto> getAllByGroupId(String groupId) {
-        return null;
+    public List<PullRequestVerifyTaskDto> getAllByGroupId(@NonNull String groupId) {
+        return pullRequestVerifyTaskRepository.findAllByGroupId(groupId)
+                .stream().map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<PullRequestVerifyTaskDto> getAllByHomeworkId(String homeworkId) {
-        return null;
+    public List<PullRequestVerifyTaskDto> getAllByHomeworkId(@NonNull String homeworkId) {
+        return pullRequestVerifyTaskRepository.findAllByHomeworkId(homeworkId)
+                .stream().map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<PullRequestVerifyTaskDto> getAllByVerified(Boolean verified) {
-        return null;
+    public List<PullRequestVerifyTaskDto> getAllByVerified(@NonNull Boolean verified) {
+        return pullRequestVerifyTaskRepository.findAllByVerified(verified)
+                .stream().map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void removeById(String id) {
+        pullRequestVerifyTaskRepository.deleteById(id);
+    }
+
+    private PullRequestVerifyTaskDto convertToDto(PullRequestVerifyTask pullRequestVerifyTask) {
+        return modelMapper.map(pullRequestVerifyTask, PullRequestVerifyTaskDto.class);
     }
 }

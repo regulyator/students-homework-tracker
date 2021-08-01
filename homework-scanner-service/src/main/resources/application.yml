@@ -1,9 +1,11 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/hwtracker
+      uri: mongodb://localhost:27017/hwtracker-verify-tasks
+  application:
+    name: hwtracker-scanner
 server:
-  port: 8110
+  port: 8120
 
 springfox:
   documentation:

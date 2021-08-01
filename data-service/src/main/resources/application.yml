@@ -2,6 +2,8 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/hwtracker
+  application:
+    name: hwtracker-data-core
 server:
   port: 8110
 
