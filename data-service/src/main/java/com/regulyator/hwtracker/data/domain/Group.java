@@ -1,7 +1,9 @@
 package com.regulyator.hwtracker.data.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -11,18 +13,20 @@ import java.util.List;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Document("Group")
 public class Group {
     @Id
-    private final String id;
+    private String id;
     @Field("course")
-    private final Course course;
+    private Course course;
     @Field("courseStart")
-    private final LocalDateTime groupStart;
+    private LocalDateTime groupStart;
     @Field("courseEnd")
-    private final LocalDateTime groupEnd;
+    private LocalDateTime groupEnd;
     @Field("teachers")
-    private final List<Teacher> teachers;
+    private List<Teacher> teachers;
     @Field("studentGroups")
-    private final List<StudentGroup> studentGroups;
+    private List<StudentGroup> studentGroups;
 }

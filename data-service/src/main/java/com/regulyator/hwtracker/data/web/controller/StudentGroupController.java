@@ -28,6 +28,11 @@ public class StudentGroupController {
         return ResponseEntity.ok(studentGroupService.getAll());
     }
 
+    @GetMapping("/hwtracker/api/data/studentgroups/active")
+    public ResponseEntity<Collection<StudentGroupDto>> getActiveStudentGroups() {
+        return ResponseEntity.ok(studentGroupService.getActiveStudentGroup());
+    }
+
     @PutMapping("/hwtracker/api/data/studentgroups")
     public ResponseEntity<StudentGroupDto> updateStudentGroup(@RequestBody StudentGroupDto studentGroupDto) {
         return ResponseEntity.ok(studentGroupService.save(studentGroupDto));

@@ -15,3 +15,9 @@ springfox:
     swagger:
       v2:
         path: /hwtracker/documentation/v2/api-docs
+
+com:
+  hwtracker:
+    githubscanner:
+      schedule:
+        cronrate: "0 0 0/1 1/1 * ?"

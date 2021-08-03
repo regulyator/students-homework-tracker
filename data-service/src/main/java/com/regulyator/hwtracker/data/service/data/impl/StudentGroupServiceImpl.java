@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,15 @@ public class StudentGroupServiceImpl implements StudentGroupService {
     @Override
     public List<StudentGroupDto> getAll() {
         return studentGroupRepository.findAll().stream()
+                .map(studentGroup -> modelMapper.map(studentGroup, StudentGroupDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<StudentGroupDto> getActiveStudentGroup() {
+        final var currentDateTime = LocalDateTime.now();
+        return studentGroupRepository.findAllByGroup_GroupStartBeforeAndGroup_GroupEndAfter(currentDateTime,
+                        currentDateTime).stream()
                 .map(studentGroup -> modelMapper.map(studentGroup, StudentGroupDto.class))
                 .collect(Collectors.toList());
     }

@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    implementation project(":data-service-client")
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.modelmapper:modelmapper:2.4.2'
