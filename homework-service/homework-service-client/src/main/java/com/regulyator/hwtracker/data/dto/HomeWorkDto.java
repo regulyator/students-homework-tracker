@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -18,5 +19,6 @@ public class HomeWorkDto {
     private String homeworkTag;
     private LocalDateTime homeworkStart;
     private LocalDateTime homeworkEnd;
-    private GroupDto group;
+    private String groupId;
+    private List<StudentHomeworkInformationDto> students;
 }

@@ -1,4 +1,4 @@
-package com.regulyator.hwtracker.data.domain;
+package com.regulyator.hwtracker.homework.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,16 +12,15 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("StudentGroup")
-public class StudentGroup {
+@Document("StudentHomeworkInformation")
+public class StudentHomeworkInformation {
     @Id
     private String id;
-    @Field("group")
-    private Group group;
-    @Field("student")
-    private Student student;
+    @Field("studentId")
+    private String studentId;
     @Field("githubUserName")
     private String githubUserName;
     @Field("homeworkRepositoryUrl")
     private String homeworkRepositoryUrl;
+
 }

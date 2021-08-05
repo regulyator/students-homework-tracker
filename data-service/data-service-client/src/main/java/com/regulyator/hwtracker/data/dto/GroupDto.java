@@ -18,5 +18,5 @@ public class GroupDto {
     private LocalDateTime groupStart;
     private LocalDateTime groupEnd;
     private List<TeacherDto> teachers;
-    private List<StudentGroupDto> studentGroups;
+    private List<StudentDto> students;
 }

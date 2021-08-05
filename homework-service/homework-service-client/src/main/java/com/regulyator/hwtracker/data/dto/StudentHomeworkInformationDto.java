@@ -9,11 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentGroupDto {
+public class StudentHomeworkInformationDto {
     private String id;
-    private GroupDto group;
-    private StudentDto student;
+    private String studentId;
     private String githubUserName;
     private String homeworkRepositoryUrl;
-
 }
