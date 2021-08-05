@@ -1,11 +1,11 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/hwtracker
+      uri: mongodb://localhost:27017/hwtracker-homework
   application:
     name: hwtracker-data-core
 server:
-  port: 8110
+  port: 8130
 
 springfox:
   documentation:

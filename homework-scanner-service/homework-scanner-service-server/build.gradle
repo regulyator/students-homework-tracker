@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation project(":data-service:data-service-client")
+    implementation project(":homework-service:homework-service-client")
     implementation project(":homework-scanner-service:homework-scanner-service-client")
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-web'
