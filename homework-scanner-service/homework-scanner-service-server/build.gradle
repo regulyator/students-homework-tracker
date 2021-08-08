@@ -27,6 +27,7 @@ dependencies {
     implementation project(":homework-scanner-service:homework-scanner-service-client")
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'org.modelmapper:modelmapper:2.4.2'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'

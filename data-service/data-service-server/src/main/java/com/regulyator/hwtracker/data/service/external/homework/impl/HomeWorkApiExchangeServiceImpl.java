@@ -1,8 +1,8 @@
-package com.regulyator.hwtracker.scanner.service.external.homework.impl;
+package com.regulyator.hwtracker.data.service.external.homework.impl;
 
 import com.regulyator.hwtracker.data.dto.HomeWorkDto;
-import com.regulyator.hwtracker.scanner.service.external.homework.HomeWorkApiExchangeService;
-import com.regulyator.hwtracker.scanner.web.feign.HomeWorkServiceApiClient;
+import com.regulyator.hwtracker.data.service.external.homework.HomeWorkApiExchangeService;
+import com.regulyator.hwtracker.data.web.feign.HomeWorkServiceApiClient;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

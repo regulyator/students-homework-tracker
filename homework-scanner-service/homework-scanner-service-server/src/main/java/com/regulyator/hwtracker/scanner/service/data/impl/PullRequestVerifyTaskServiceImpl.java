@@ -1,5 +1,7 @@
 package com.regulyator.hwtracker.scanner.service.data.impl;
 
+import com.regulyator.hwtracker.data.dto.HomeWorkDto;
+import com.regulyator.hwtracker.scanner.domain.github.PullRequest;
 import com.regulyator.hwtracker.scanner.domain.stored.PullRequestVerifyTask;
 import com.regulyator.hwtracker.scanner.dto.PullRequestVerifyTaskDto;
 import com.regulyator.hwtracker.scanner.exception.EntityNotFoundException;
@@ -8,6 +10,7 @@ import com.regulyator.hwtracker.scanner.service.data.PullRequestVerifyTaskServic
 import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +33,20 @@ public class PullRequestVerifyTaskServiceImpl implements PullRequestVerifyTaskSe
         final var savedPullRequestVerifyTask = pullRequestVerifyTaskRepository
                 .save(modelMapper.map(pullRequestVerifyTaskDto, PullRequestVerifyTask.class));
         return modelMapper.map(savedPullRequestVerifyTask, PullRequestVerifyTaskDto.class);
+    }
+
+    @Override
+    public PullRequestVerifyTaskDto save(@NonNull PullRequest pullRequest,
+                                         @NonNull HomeWorkDto homeWork,
+                                         @NonNull String studentId) {
+        final var pullRequestVerifyTask = PullRequestVerifyTaskDto.builder()
+                .groupId(homeWork.getGroupId())
+                .homeworkId(homeWork.getId())
+                .studentId(studentId)
+                .pullRequestUrl(pullRequest.getUrl())
+                .verified(false)
+                .build();
+        return this.save(pullRequestVerifyTask);
     }
 
     @Override
@@ -98,8 +115,14 @@ public class PullRequestVerifyTaskServiceImpl implements PullRequestVerifyTaskSe
     }
 
     @Override
-    public void removeById(String id) {
+    public void removeById(@NonNull String id) {
         pullRequestVerifyTaskRepository.deleteById(id);
+    }
+
+    @Override
+    @Cacheable(value = "pullRequestTaskCache")
+    public boolean existsByPullRequestUrl(@NonNull String pullRequestUrl) {
+        return pullRequestVerifyTaskRepository.existsByPullRequestUrl(pullRequestUrl);
     }
 
     private PullRequestVerifyTaskDto convertToDto(PullRequestVerifyTask pullRequestVerifyTask) {

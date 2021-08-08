@@ -1,4 +1,4 @@
-package com.regulyator.hwtracker.scanner.service.feign;
+package com.regulyator.hwtracker.scanner.web.feign;
 
 import com.regulyator.hwtracker.scanner.domain.github.PullRequest;
 import com.regulyator.hwtracker.scanner.domain.github.Repository;

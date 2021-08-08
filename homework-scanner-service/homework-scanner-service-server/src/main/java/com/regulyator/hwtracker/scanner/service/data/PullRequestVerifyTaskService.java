@@ -1,20 +1,12 @@
 package com.regulyator.hwtracker.scanner.service.data;
 
+import com.regulyator.hwtracker.data.dto.HomeWorkDto;
+import com.regulyator.hwtracker.scanner.domain.github.PullRequest;
 import com.regulyator.hwtracker.scanner.dto.PullRequestVerifyTaskDto;
 
 import java.util.List;
 
 public interface PullRequestVerifyTaskService {
-
-    PullRequestVerifyTaskDto save(PullRequestVerifyTaskDto pullRequestVerifyTaskDto);
-
-    PullRequestVerifyTaskDto assignTeacherForTask(String teacherId, String taskId);
-
-    PullRequestVerifyTaskDto getById(String id);
-
-    List<PullRequestVerifyTaskDto> getAll();
-
-    void removeById(String id);
 
     List<PullRequestVerifyTaskDto> getAllByAssignedTeacherId(String teacherId);
 
@@ -27,4 +19,18 @@ public interface PullRequestVerifyTaskService {
     List<PullRequestVerifyTaskDto> getAllByHomeworkId(String homeworkId);
 
     List<PullRequestVerifyTaskDto> getAllByVerified(Boolean verified);
+
+    PullRequestVerifyTaskDto save(PullRequestVerifyTaskDto pullRequestVerifyTaskDto);
+
+    PullRequestVerifyTaskDto save(PullRequest pullRequest, HomeWorkDto homeWork, String studentId);
+
+    PullRequestVerifyTaskDto assignTeacherForTask(String teacherId, String taskId);
+
+    PullRequestVerifyTaskDto getById(String id);
+
+    List<PullRequestVerifyTaskDto> getAll();
+
+    void removeById(String id);
+
+    boolean existsByPullRequestUrl(String pullRequestUrl);
 }

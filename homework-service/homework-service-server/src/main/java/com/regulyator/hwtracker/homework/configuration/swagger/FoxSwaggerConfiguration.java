@@ -15,7 +15,7 @@ public class FoxSwaggerConfiguration {
     public Docket apiExposure() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.regulyator.homework.data.web"))
+                .apis(RequestHandlerSelectors.basePackage("com.regulyator.hwtracker.homework.web"))
                 .paths(PathSelectors.any())
                 .build();
 

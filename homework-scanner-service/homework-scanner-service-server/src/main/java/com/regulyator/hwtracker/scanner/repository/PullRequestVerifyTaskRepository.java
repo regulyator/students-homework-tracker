@@ -18,4 +18,6 @@ public interface PullRequestVerifyTaskRepository extends MongoRepository<PullReq
     List<PullRequestVerifyTask> findAllByHomeworkId(String homeworkId);
 
     List<PullRequestVerifyTask> findAllByVerified(Boolean verified);
+
+    boolean existsByPullRequestUrl(String pullRequestUrl);
 }

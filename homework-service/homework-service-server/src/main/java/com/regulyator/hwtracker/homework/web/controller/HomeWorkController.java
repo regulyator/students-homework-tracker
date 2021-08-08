@@ -29,12 +29,12 @@ public class HomeWorkController {
     }
 
     @PutMapping("/hwtracker/api/homeworks")
-    public ResponseEntity<HomeWorkDto> updateCourse(@RequestBody HomeWorkDto homeWorkDto) {
+    public ResponseEntity<HomeWorkDto> updateHomeWork(@RequestBody HomeWorkDto homeWorkDto) {
         return ResponseEntity.ok(homeWorkService.save(homeWorkDto));
     }
 
     @PostMapping("/hwtracker/api/homeworks")
-    public ResponseEntity<HomeWorkDto> createCourse(@RequestBody HomeWorkDto homeWorkDto) {
+    public ResponseEntity<HomeWorkDto> createHomeWork(@RequestBody HomeWorkDto homeWorkDto) {
         final var savedHomeWorkDto = homeWorkService.save(homeWorkDto);
         return ResponseEntity.created(
                 ServletUriComponentsBuilder

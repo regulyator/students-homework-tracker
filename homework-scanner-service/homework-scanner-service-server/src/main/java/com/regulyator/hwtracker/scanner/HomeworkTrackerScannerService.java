@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = {"com.regulyator.hwtracker.scanner.service.feign"})
+@EnableFeignClients(basePackages = {"com.regulyator.hwtracker.scanner.web.feign"})
 @EnableScheduling
 public class HomeworkTrackerScannerService {
 
