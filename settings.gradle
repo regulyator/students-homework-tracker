@@ -5,5 +5,5 @@ include 'homework-scanner-service:homework-scanner-service-server'
 include 'homework-scanner-service:homework-scanner-service-client'
 include 'homework-service:homework-service-server'
 include 'homework-service:homework-service-client'
-
+include 'gateway-service'
 

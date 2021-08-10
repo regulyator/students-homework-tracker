@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value = "homework-service", url = "http://127.0.0.1:8130/")
+@FeignClient("hwtracker-data-homework")
 public interface HomeWorkServiceApiClient {
 
     @GetMapping("/hwtracker/api/homeworks/{homeWorkId}")
