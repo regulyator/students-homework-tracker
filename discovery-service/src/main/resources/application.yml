@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: discovery-service
+
+server:
+  port: 8761
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    eviction-interval-timer-in-ms: 10000
+    renewal-percent-threshold: 0.85
