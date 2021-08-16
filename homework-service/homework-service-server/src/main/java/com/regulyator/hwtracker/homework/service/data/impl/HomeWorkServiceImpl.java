@@ -10,7 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,14 +28,14 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 
     @Override
     public List<HomeWorkDto> getAllActiveHomeworks() {
-        var nowDAteTime = LocalDateTime.now();
-        return homeWorkRepository.findAllByHomeworkStartBeforeAndHomeworkEndAfter(nowDAteTime, nowDAteTime).stream()
+        var nowDate = new Date();
+        return homeWorkRepository.findAllByHomeworkStartBeforeAndHomeworkEndAfter(nowDate, nowDate).stream()
                 .map(group -> modelMapper.map(group, HomeWorkDto.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<HomeWorkDto> getAllHomeWorkByPeriod(@NonNull LocalDateTime start, @NonNull LocalDateTime end) {
+    public List<HomeWorkDto> getAllHomeWorkByPeriod(@NonNull Date start, @NonNull Date end) {
         return homeWorkRepository.findAllByHomeworkStartBeforeAndHomeworkEndAfter(start, end).stream()
                 .map(group -> modelMapper.map(group, HomeWorkDto.class))
                 .collect(Collectors.toList());

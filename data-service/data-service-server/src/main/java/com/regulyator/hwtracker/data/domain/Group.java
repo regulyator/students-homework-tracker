@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -22,9 +23,9 @@ public class Group {
     @Field("course")
     private Course course;
     @Field("courseStart")
-    private LocalDateTime groupStart;
+    private Date groupStart;
     @Field("courseEnd")
-    private LocalDateTime groupEnd;
+    private Date groupEnd;
     @Field("teachers")
     private List<Teacher> teachers;
     @Field("students")

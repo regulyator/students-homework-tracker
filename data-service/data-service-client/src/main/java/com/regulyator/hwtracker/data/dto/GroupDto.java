@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -15,8 +15,8 @@ import java.util.List;
 public class GroupDto {
     private String id;
     private CourseDto course;
-    private LocalDateTime groupStart;
-    private LocalDateTime groupEnd;
+    private Date groupStart;
+    private Date groupEnd;
     private List<TeacherDto> teachers;
     private List<StudentDto> students;
 }

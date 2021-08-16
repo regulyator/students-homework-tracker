@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -26,9 +27,9 @@ public class HomeWork {
     @Field("homeworkTag")
     private String homeworkTag;
     @Field("homeworkStart")
-    private LocalDateTime homeworkStart;
+    private Date homeworkStart;
     @Field("homeworkEnd")
-    private LocalDateTime homeworkEnd;
+    private Date homeworkEnd;
     @Field("groupId")
     private String groupId;
     @Field("students")
