@@ -11,5 +11,7 @@ public interface HomeWorkService extends StandardDataService<HomeWorkDto> {
 
     List<HomeWorkDto> getAllActiveHomeworks();
 
+    List<HomeWorkDto> getAllGroupHomeWork(String groupId);
+
     List<HomeWorkDto> getAllHomeWorkByPeriod(Date start, Date end);
 }

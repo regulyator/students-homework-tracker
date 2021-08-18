@@ -35,6 +35,13 @@ public class HomeWorkServiceImpl implements HomeWorkService {
     }
 
     @Override
+    public List<HomeWorkDto> getAllGroupHomeWork(@NonNull String groupId) {
+        return homeWorkRepository.findAllByGroupId(groupId).stream()
+                .map(group -> modelMapper.map(group, HomeWorkDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<HomeWorkDto> getAllHomeWorkByPeriod(@NonNull Date start, @NonNull Date end) {
         return homeWorkRepository.findAllByHomeworkStartBeforeAndHomeworkEndAfter(start, end).stream()
                 .map(group -> modelMapper.map(group, HomeWorkDto.class))

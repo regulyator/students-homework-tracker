@@ -28,6 +28,11 @@ public class HomeWorkController {
         return ResponseEntity.ok(active ? homeWorkService.getAllActiveHomeworks() : homeWorkService.getAll());
     }
 
+    @GetMapping("/hwtracker/api/homeworks/group/{groupId}")
+    public ResponseEntity<Collection<HomeWorkDto>> getAllGroupHomeWorks(@PathVariable String groupId) {
+        return ResponseEntity.ok(homeWorkService.getAllGroupHomeWork(groupId));
+    }
+
     @PutMapping("/hwtracker/api/homeworks")
     public ResponseEntity<HomeWorkDto> updateHomeWork(@RequestBody HomeWorkDto homeWorkDto) {
         return ResponseEntity.ok(homeWorkService.save(homeWorkDto));
