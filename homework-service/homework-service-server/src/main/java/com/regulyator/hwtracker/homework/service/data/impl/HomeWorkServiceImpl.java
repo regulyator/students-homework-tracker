@@ -57,7 +57,6 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 
     @Override
     public HomeWorkDto save(@NonNull HomeWorkDto homeWorkDto) {
-        initStudentsForNewHomeWork(homeWorkDto);
         final var savedHomeWork = homeWorkRepository.save(modelMapper.map(homeWorkDto, HomeWork.class));
         return modelMapper.map(savedHomeWork, HomeWorkDto.class);
     }
@@ -80,23 +79,5 @@ public class HomeWorkServiceImpl implements HomeWorkService {
     @Override
     public void removeById(@NonNull String id) {
         homeWorkRepository.deleteById(id);
-    }
-
-    private void initStudentsForNewHomeWork(HomeWorkDto homeWorkDto) {
-        if (StringUtils.hasText(homeWorkDto.getGroupId())
-                && (Objects.isNull(homeWorkDto.getStudents()) || homeWorkDto.getStudents().isEmpty())) {
-
-            var group = dataExchangeApiServiceClient.getGroupDtoById(homeWorkDto.getGroupId());
-            group.ifPresent(groupDto -> {
-                var homeworkStudents = groupDto.getStudents().stream()
-                        .map(studentDto ->
-                                StudentHomeworkInformationDto.builder()
-                                        .studentId(studentDto.getId())
-                                        .build())
-                        .collect(Collectors.toList());
-                homeWorkDto.setStudents(homeworkStudents);
-            });
-
-        }
     }
 }

@@ -120,9 +120,8 @@ public class PullRequestVerifyTaskServiceImpl implements PullRequestVerifyTaskSe
     }
 
     @Override
-    @Cacheable(value = "pullRequestTaskCache")
     public boolean existsByPullRequestUrl(@NonNull String pullRequestUrl) {
-        return pullRequestVerifyTaskRepository.existsByPullRequestUrl(pullRequestUrl);
+        return pullRequestVerifyTaskRepository.existsPullRequestVerifyTaskByPullRequestUrl(pullRequestUrl);
     }
 
     private PullRequestVerifyTaskDto convertToDto(PullRequestVerifyTask pullRequestVerifyTask) {

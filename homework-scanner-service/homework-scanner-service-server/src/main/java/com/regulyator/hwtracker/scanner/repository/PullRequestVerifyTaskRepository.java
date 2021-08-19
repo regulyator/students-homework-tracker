@@ -1,6 +1,7 @@
 package com.regulyator.hwtracker.scanner.repository;
 
 import com.regulyator.hwtracker.scanner.domain.stored.PullRequestVerifyTask;
+import org.springframework.data.domain.Example;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
@@ -19,5 +20,6 @@ public interface PullRequestVerifyTaskRepository extends MongoRepository<PullReq
 
     List<PullRequestVerifyTask> findAllByVerified(Boolean verified);
 
-    boolean existsByPullRequestUrl(String pullRequestUrl);
+    boolean existsPullRequestVerifyTaskByPullRequestUrl(String pullRequestUrl);
+
 }
