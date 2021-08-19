@@ -24,8 +24,6 @@ public interface PullRequestVerifyTaskService {
 
     PullRequestVerifyTaskDto save(PullRequest pullRequest, HomeWorkDto homeWork, String studentId);
 
-    PullRequestVerifyTaskDto assignTeacherForTask(String teacherId, String taskId);
-
     PullRequestVerifyTaskDto getById(String id);
 
     List<PullRequestVerifyTaskDto> getAll();

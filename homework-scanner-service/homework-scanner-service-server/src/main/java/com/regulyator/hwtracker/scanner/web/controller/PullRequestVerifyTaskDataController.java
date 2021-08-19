@@ -4,9 +4,8 @@ import com.regulyator.hwtracker.scanner.dto.PullRequestVerifyTaskDto;
 import com.regulyator.hwtracker.scanner.service.data.PullRequestVerifyTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -56,5 +55,10 @@ public class PullRequestVerifyTaskDataController {
     @GetMapping(value = "/hwtracker/api/tracker/tasks/verified/{verified}")
     public ResponseEntity<Collection<PullRequestVerifyTaskDto>> getAllPullRequestVerifyTasksByVerified(@PathVariable Boolean verified) {
         return ResponseEntity.ok(pullRequestVerifyTaskService.getAllByVerified(verified));
+    }
+
+    @PutMapping("/hwtracker/api/tracker/tasks")
+    public ResponseEntity<PullRequestVerifyTaskDto> updateTask(@RequestBody PullRequestVerifyTaskDto pullRequestVerifyTaskDto) {
+        return ResponseEntity.ok(pullRequestVerifyTaskService.save(pullRequestVerifyTaskDto));
     }
 }

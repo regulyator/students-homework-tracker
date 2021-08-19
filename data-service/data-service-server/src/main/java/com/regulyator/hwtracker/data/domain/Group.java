@@ -20,6 +20,8 @@ import java.util.List;
 public class Group {
     @Id
     private String id;
+    @Field("groupName")
+    private String groupName;
     @Field("course")
     private Course course;
     @Field("courseStart")

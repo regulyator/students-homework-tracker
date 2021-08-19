@@ -50,14 +50,6 @@ public class PullRequestVerifyTaskServiceImpl implements PullRequestVerifyTaskSe
     }
 
     @Override
-    public PullRequestVerifyTaskDto assignTeacherForTask(@NonNull String teacherId, @NonNull String taskId) {
-        final var task = pullRequestVerifyTaskRepository.findById(taskId)
-                .orElseThrow(EntityNotFoundException::new);
-        task.setAssignedTeacherId(teacherId);
-        return modelMapper.map(pullRequestVerifyTaskRepository.save(task), PullRequestVerifyTaskDto.class);
-    }
-
-    @Override
     public PullRequestVerifyTaskDto getById(@NonNull String id) {
         return pullRequestVerifyTaskRepository.findById(id)
                 .map(this::convertToDto)

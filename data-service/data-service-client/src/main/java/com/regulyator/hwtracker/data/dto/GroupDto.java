@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class GroupDto {
     private String id;
+    private String groupName;
     private CourseDto course;
     private Date groupStart;
     private Date groupEnd;
