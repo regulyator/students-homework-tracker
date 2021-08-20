@@ -5,8 +5,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,8 +30,6 @@ public class User implements UserDetails {
     private String username;
     @Field("teacherId")
     private String teacherId;
-    @Field("authorities")
-    private Set<GrantedAuthority> authorities = new HashSet<>();
     @Field("accountNonExpired")
     private boolean accountNonExpired;
     @Field("accountNonLocked")
@@ -38,10 +38,14 @@ public class User implements UserDetails {
     private boolean credentialsNonExpired;
     @Field("enabled")
     private boolean enabled;
+    private String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities;
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(this.role);
+        authorities.add(authority);
+        return authorities;
     }
 
     @Override

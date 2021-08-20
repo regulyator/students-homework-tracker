@@ -4,10 +4,7 @@ import com.github.cloudyrock.mongock.ChangeLog;
 import com.github.cloudyrock.mongock.ChangeSet;
 import com.regulyator.hwtracker.userservice.domain.User;
 import com.regulyator.hwtracker.userservice.repository.UserRepository;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Set;
 
 @ChangeLog
 public class InitUserData {
@@ -17,7 +14,7 @@ public class InitUserData {
         userRepository.save(User.builder()
                 .username("admin")
                 .password(passwordEncoder.encode("somestandartpassword"))
-                .authorities(Set.of(new SimpleGrantedAuthority("ROLE_ADMIN")))
+                .role("ROLE_ADMIN")
                 .enabled(true)
                 .credentialsNonExpired(true)
                 .accountNonLocked(true)

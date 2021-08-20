@@ -2,8 +2,10 @@ package com.regulyator.hwtracker.gateway.domain;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,15 +22,18 @@ public class User implements UserDetails {
     private String password;
     private String username;
     private String teacherId;
-    private Set<GrantedAuthority> authorities = new HashSet<>();
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
+    private String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities;
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(this.role);
+        authorities.add(authority);
+        return authorities;
     }
 
     @Override
