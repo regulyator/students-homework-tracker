@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,6 +36,14 @@ public class TeacherServiceImpl implements TeacherService {
     public TeacherDto getById(@NonNull String id) {
         return teacherRepository
                 .findById(id)
+                .map(teacher -> modelMapper.map(teacher, TeacherDto.class))
+                .orElseThrow(EntityNotFoundException::new);
+    }
+
+    @Override
+    public TeacherDto getTeacherByEmail(@NonNull String email) {
+        return teacherRepository.
+                findTeacherByEmail(email)
                 .map(teacher -> modelMapper.map(teacher, TeacherDto.class))
                 .orElseThrow(EntityNotFoundException::new);
     }

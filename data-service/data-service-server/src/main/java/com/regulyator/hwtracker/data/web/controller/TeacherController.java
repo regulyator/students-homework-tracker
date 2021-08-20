@@ -1,6 +1,7 @@
 package com.regulyator.hwtracker.data.web.controller;
 
 import com.regulyator.hwtracker.data.dto.TeacherDto;
+import com.regulyator.hwtracker.data.exception.EntityNotFoundException;
 import com.regulyator.hwtracker.data.service.data.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,15 @@ public class TeacherController {
     @GetMapping("/hwtracker/api/data/teachers")
     public ResponseEntity<Collection<TeacherDto>> getAllTeachers() {
         return ResponseEntity.ok(teacherService.getAll());
+    }
+
+    @GetMapping("/hwtracker/api/data/teachers/email/{email}")
+    public ResponseEntity<TeacherDto> getTeacherByEmail(@PathVariable String email) {
+        try {
+            return ResponseEntity.ok(teacherService.getTeacherByEmail(email));
+        } catch (EntityNotFoundException ex) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("/hwtracker/api/data/teachers")
