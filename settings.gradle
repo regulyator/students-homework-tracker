@@ -1,2 +1,11 @@
 rootProject.name = 'students-homework-tracker'
+include 'data-service:data-service-server'
+include 'data-service:data-service-client'
+include 'homework-scanner-service:homework-scanner-service-server'
+include 'homework-scanner-service:homework-scanner-service-client'
+include 'homework-service:homework-service-server'
+include 'homework-service:homework-service-client'
+include 'discovery-service'
+include 'gateway-service'
+include 'user-service'
 

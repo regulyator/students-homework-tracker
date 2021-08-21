@@ -1,0 +1,26 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/hwtracker-users
+  application:
+    name: user-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+server:
+  port: 8140
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+
+mongock:
+  runner-type: initializingbean
+  change-logs-scan-package:
+    - com.regulyator.hwtracker.userservice.changelog

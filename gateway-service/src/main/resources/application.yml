@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: gateway-service
+
+zuul:
+  routes:
+    core:
+      path: /hwtracker/api/data/**
+      serviceId: hwtracker-data-core
+      stripPrefix: false
+    homework:
+      path: /hwtracker/api/homeworks/**
+      serviceId: hwtracker-data-homework
+      stripPrefix: false
+    scanner:
+      path: /hwtracker/api/tracker/**
+      serviceId: hwtracker-scanner
+      stripPrefix: false
+    user:
+      path: /hwtracker/api/user/**
+      serviceId: user-service
+      stripPrefix: false
+
+
+server:
+  port: 8180
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
