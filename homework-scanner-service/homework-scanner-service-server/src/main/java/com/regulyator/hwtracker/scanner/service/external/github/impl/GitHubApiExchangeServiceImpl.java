@@ -32,7 +32,6 @@ public class GitHubApiExchangeServiceImpl implements GitHubApiExchangeService {
 
 
     @Override
-    @Cacheable(value = "pullRequestCache")
     public List<PullRequest> getPullRequests(String userLogin, String repositoryName) {
         try {
             return (StringUtils.hasText(userLogin)

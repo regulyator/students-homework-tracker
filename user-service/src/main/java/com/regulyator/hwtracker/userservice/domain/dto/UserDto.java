@@ -1,4 +1,4 @@
-package com.regulyator.hwtracker.userservice.domain;
+package com.regulyator.hwtracker.userservice.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

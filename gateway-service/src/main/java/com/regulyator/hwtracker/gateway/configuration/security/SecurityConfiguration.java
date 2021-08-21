@@ -47,14 +47,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests()
+        http.csrf().disable()
+                .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/hwtracker/api/**").permitAll()
-                .antMatchers("/hwtracker/api/user/login/**").permitAll()
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/hwtracker/api/user/login/*", "/hwtracker/api/user/register/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .httpBasic()
-                .and().csrf().disable();
+                .httpBasic();
 
 
     }

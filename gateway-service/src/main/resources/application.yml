@@ -17,7 +17,7 @@ zuul:
       serviceId: hwtracker-scanner
       stripPrefix: false
     user:
-      path: /security/**
+      path: /hwtracker/api/user/**
       serviceId: user-service
       stripPrefix: false
 

@@ -1,4 +1,4 @@
-package com.regulyator.hwtracker.userservice.domain;
+package com.regulyator.hwtracker.userservice.domain.stored;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

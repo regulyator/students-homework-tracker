@@ -2,7 +2,7 @@ package com.regulyator.hwtracker.userservice.changelog;
 
 import com.github.cloudyrock.mongock.ChangeLog;
 import com.github.cloudyrock.mongock.ChangeSet;
-import com.regulyator.hwtracker.userservice.domain.User;
+import com.regulyator.hwtracker.userservice.domain.stored.User;
 import com.regulyator.hwtracker.userservice.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
